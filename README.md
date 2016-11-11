@@ -1,25 +1,24 @@
-# ISJ<br><br>
+# ISJ<br>
+Scripting Languages projects<br>
 #Project 1 12/12<br>
-Scripting Languages projects<br><br>
-<br><br>
-S využitím regulárních výrazů a programu sed, jazyka Perl (sed 's/before/after/g' můžete nahradit perl -ne 's/before/after/g; print;', nebo využít program s2p), případně jazyka Python, pokud jej už ovládáte, vytvořte skript pro unixový příkazový interpret (shell), nebo program v jazyce Python, který na řádcích, obsahujících řetězec xkcd, nahradí text, odpovídající regulárnímu výrazu bu.*ls, řetězcem \[gikuj]..n|a.\[alt]|\[pivo].l|i..o|\[jocy]e|sh|di|oo (nahrazujeme skutečně řetězcem, žádné znaky zde nemají speciální význam). <br><br>
-Program dále na řádcích, obsahujících znaky = a [ (znaky "rovná se" a "levá hranatá závorka"), a současně neobsahujích znak ! (neobsahujících znak "vykřičník"), nahradí výskyty řetězce xkcd za vaše fakultní uživatelské jméno (tedy např. za xnovak01).<br><br>
-<br><br>
-Jako první řádek skriptu uveďte tzv. shebang (viz https://en.wikipedia.org/wiki/Shebang_%28Unix%29), který umožní spuštění skriptu na fakultním serveru merlin, takže např.:<br><br>
-\#!/usr/bin/env bash<br><br>
-nebo<br><br>
-\#!/usr/bin/env python3<br><br>
-<br><br>
-Název souboru se skriptem musí odpovídat tvaru login.sh nebo login.py (tedy např. xnovak01.sh).<br><br>
- <br><br>
-Aplikujte svůj program na zdrojový kód "zápisníku" http://nbviewer.jupyter.org/url/norvig.com/ipython/xkcd1313.ipynb (tedy soubor z adresy http://norvig.com/ipython/xkcd1313.ipynb). Výsledek (zápisník s nahrazením) pojmenujte login.ipynb (tedy např. xnovak01.ipynb).<br><br>
-<br><br>
-Zjistěte, co v upraveném zápisníku vrátí volání funkce mistakes(vas_login, winners, losers), tedy např.:<br><br>
-mistakes(xnovak01, winners, losers)<br><br>
-a napiště příslušný řádek výstupu do samostatného souboru, pojmenovaném login.mistakes (tedy např. xnovak01.mistakes)<br><br>
-<br><br>
-Výsledek odevzdejte prostřednictvím WIS jako komprimovaný "balíček" ve formátu .tgz nebo .zip a pojmenujte login.format (tedy např. xnovak01.tgz). Musí obsahovat vlastní skript, případně všechny další odkazované soubory, zdrojovou i výslednou podobu zápisníku a soubor .mistakes.<br><br>
-<br><br>
+S využitím regulárních výrazů a programu sed, jazyka Perl (sed 's/before/after/g' můžete nahradit perl -ne 's/before/after/g; print;', nebo využít program s2p), případně jazyka Python, pokud jej už ovládáte, vytvořte skript pro unixový příkazový interpret (shell), nebo program v jazyce Python, který na řádcích, obsahujících řetězec xkcd, nahradí text, odpovídající regulárnímu výrazu bu.*ls, řetězcem \[gikuj]..n|a.\[alt]|\[pivo].l|i..o|\[jocy]e|sh|di|oo (nahrazujeme skutečně řetězcem, žádné znaky zde nemají speciální význam). <br>
+Program dále na řádcích, obsahujících znaky = a [ (znaky "rovná se" a "levá hranatá závorka"), a současně neobsahujích znak ! (neobsahujících znak "vykřičník"), nahradí výskyty řetězce xkcd za vaše fakultní uživatelské jméno (tedy např. za xnovak01).<br>
+<br>
+Jako první řádek skriptu uveďte tzv. shebang (viz https://en.wikipedia.org/wiki/Shebang_%28Unix%29), který umožní spuštění skriptu na fakultním serveru merlin, takže např.:<br>
+\#!/usr/bin/env bash<br>
+nebo<br>
+\#!/usr/bin/env python3<br>
+<br>
+Název souboru se skriptem musí odpovídat tvaru login.sh nebo login.py (tedy např. xnovak01.sh).<br>
+ <br>
+Aplikujte svůj program na zdrojový kód "zápisníku" http://nbviewer.jupyter.org/url/norvig.com/ipython/xkcd1313.ipynb (tedy soubor z adresy http://norvig.com/ipython/xkcd1313.ipynb). Výsledek (zápisník s nahrazením) pojmenujte login.ipynb (tedy např. xnovak01.ipynb).<br>
+<br>
+Zjistěte, co v upraveném zápisníku vrátí volání funkce mistakes(vas_login, winners, losers), tedy např.:<br>
+mistakes(xnovak01, winners, losers)<br>
+a napiště příslušný řádek výstupu do samostatného souboru, pojmenovaném login.mistakes (tedy např. xnovak01.mistakes)<br>
+<br>
+Výsledek odevzdejte prostřednictvím WIS jako komprimovaný "balíček" ve formátu .tgz nebo .zip a pojmenujte login.format (tedy např. xnovak01.tgz). Musí obsahovat vlastní skript, případně všechny další odkazované soubory, zdrojovou i výslednou podobu zápisníku a soubor .mistakes.<br>
+<br>
 Projekt bude hodnocen automaticky, při nedodržení názvových konvencí nebo dalších pravidel bohužel nebudete moci získat body.<br>
 #Project 2 14/14<br>
 Implementujte v Pythonu nebo Ruby třídu Polynomial, která bude pracovat s polynomy reprezentovanými jako seznamy (v Ruby pole). Například 2x^3 - 3x + 1 bude  reprezentováno jako [1,-3,0,2] (seznam začíná nejnižším řádem, i když se polynomy většinou zapisují opačně).<br>
