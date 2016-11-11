@@ -1,0 +1,161 @@
+#!/usr/bin/env python3
+class Polynomial(list): #class
+	def __init__(self, *argc, **kwords): #TODO for kwords, if one is missing TODO test it
+		#this is ugly
+		if kwords:
+			keys = sorted(kwords)
+			self.arg=list(range(len(keys)))
+			i = 0
+			for x in keys:
+				self.arg[i]=kwords[x]
+				i = i + 1
+			
+			y = list(range(len(keys)))
+			i = 0
+			for x in keys:
+				y[i] = int(x[1:])
+				i = i + 1
+			i = 0
+			size = len(y)
+			while i < size:
+				if i != y[i]:
+					y.append(0)
+					self.arg.append(0)
+					j = i
+					while (j < (len(y) - 1)):
+						y[j+1] = y[j]
+						self.arg[j+1] = self.arg[j]
+						j = j + 1
+					self.arg[i] = 0
+					y[i] = i
+					i = i+1
+				i = i + 1 
+
+		# this is nice
+		else:
+			self.arg = list(range(len(argc)))
+			if (type(argc[0]) == type(list())):
+				self.arg = list(range(len(argc[0])))
+				i = 0
+				for x in argc[0]:
+					self.arg[i] = x
+					i = i + 1
+			else:
+				self.arg = list(argc)
+
+	def __repr__(self): #own printing
+		text = ""
+		length = len(self.arg)
+		i = 0
+		for x in self.arg:
+			if (x == 0):
+				i = i + 1
+				continue
+			elif (i == 0 and x < 0):
+				x = -x
+				text = "- %s" % (x) + text
+			elif (i == 0):
+				text = "+ %s" % (x) + text
+			elif (x < 0):
+				x = -x
+				if (i == 1):
+					if (x == 1):
+						text = "- x " + text
+					else:
+						text = "- %sx " % (x) + text
+				else:
+					if (x == 1):
+						text = "- x^%s " % (i) + text
+					else:
+						text = "- %sx^%s " % (x, i) + text
+			else:
+				if (i == 1):
+					if (x == 1):
+						text = "+ x " + text
+					else:
+						text = "+ %sx " % (x) + text
+				else:
+					if (x == 1):
+						text = "+ x^%s " % (i) + text
+					else:
+						text = "+ %sx^%s " % (x, i) + text
+			i = i + 1
+		if (text[0] == "+"):
+			text = text[2:]
+		return text
+
+	def __add__(self, other): #own adding
+		if (len(self.arg) < len(other.arg)):
+			summ = Polynomial(other.arg)
+			i = len(self.arg) - 1
+			for x in self.arg:
+				summ.arg[i] = self.arg[i] + summ.arg[i]
+				i = i - 1
+		else:
+			summ = Polynomial(self.arg)
+			i = len(other.arg) - 1
+			for x in other.arg:
+				summ.arg[i] = other.arg[i] + summ.arg[i]
+				i = i - 1
+
+		return summ
+			
+	def __pow__(self, value): #TODO
+		size = (len(self.arg)) * value - 1
+		result = list(range(size))
+		i = 0
+		while i<size:
+			result[i] = 0
+			i = i + 1
+		i = 0 #index of result
+		while i<size:
+			j = 0
+			summ = 0
+			while j < len(self.arg):
+				k = 0
+				while k < len(self.arg):
+					if j + k == i:
+						result[i] = result[i] + self.arg[j]*self.arg[k]
+					k = k + 1
+				j = j + 1
+			i = i + 1			
+		return Polynomial(result)
+		
+	def derivate(self): #derivation
+		length = len(self.arg)
+		i = 0
+		der = Polynomial(self.arg)
+		for x in self.arg:
+			der.arg[i] = i * x
+			i = i + 1
+		del der.arg[0]
+		return der
+
+	def at_value(self, *value):
+		result = 0
+		for y in value:
+			i = 0
+			for x in self.arg:
+				result = result + x * (y ** i)
+				i = i + 1
+		return result
+
+#print(Polynomial(0, 2, 1)+Polynomial(1, -3, 0, 2))	
+#print(Polynomial(1,-3,0,2)+Polynomial(0, 2, 1))
+print(Polynomial(1,-3,0,2))
+print(Polynomial(1,-3,0,2) ** 2)
+#print(Polynomial(-1, 1))
+#print(Polynomial(-1, 1) ** 2)
+#pol1 = Polynomial([1,-3,0,2])
+#pol2 = Polynomial(1,-3,0,2)
+#pol3 = Polynomial(x0=1,x3=2,x1=-3)
+#print (pol1)
+#print (pol2)
+#print (pol3)
+#print (pol1.derivate())
+#print (pol2.derivate())
+#print (pol3.derivate())
+#print (pol3 + pol1)
+#print (pol1.at_value(2,3))
+
+		
